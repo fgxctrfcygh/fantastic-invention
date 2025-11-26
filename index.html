@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+             gap: 10px;
+              
+        }
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <h1>Talabalar bahosini hisoblash</h1>
+        <label for="exam">Imtihon bali (0-100):</label>
+        <input type="number" id="exam" min="0" max="100" required>
+        <label for="homework">Uy vazifa bali (0-100):</label>
+        <input type="number" id="homework" min="0" max="100" required>
+        <label for="project">Loyiha bali (0-100):</label>
+        <input type="number" id="project" min="0" max="100" required>
+        <button id="calculate">Hisoblash</button>
+        <p id="result"></p>
+    </div>
+    <script>
+         
+          const calculateButton = document.getElementById("calculate");
+          calculateButton.addEventListener("click", function() {
+            const exam = parseFloat(document.getElementById("exam").value);
+            const homework = parseFloat(document.getElementById("homework").value);
+            const project = parseFloat(document.getElementById("project").value);
+            const final = (exam * 0.5) + (homework * 0.2) + (project * 0.3);
+            let grade;
+            if (final >= 90) {
+                grade = "A";
+            } else if (final >= 80) {
+                grade = "B";
+            } else if (final >= 70) {
+                grade = "C";
+            } else if (final >= 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+            document.getElementById("result").textContent = `O‘rtacha baho: ${final.toFixed(2)}, Harf ball: ${grade}`;
+        });
+
+    </script>
+</body>
+</html>
